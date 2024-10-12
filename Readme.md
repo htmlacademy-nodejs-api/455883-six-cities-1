@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Роман Корупаев](https://up.htmlacademy.ru/nodejs-api-individual/1/user/455883).
-* Наставник: `Неизвестно`.
+* Наставник: [Владислав Поклонский](https://htmlacademy.ru/profile/id2210683).
 
 ---
 
