@@ -3,7 +3,6 @@
 * Студент: [Роман Корупаев](https://up.htmlacademy.ru/nodejs-api-individual/1/user/455883).
 * Наставник: [Владислав Поклонский](https://htmlacademy.ru/profile/id2210683).
 
-
 ---
 
 _Не удаляйте и не изменяйте папки и файлы:_
