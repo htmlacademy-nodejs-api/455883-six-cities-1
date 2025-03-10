@@ -1,4 +1,4 @@
-import {CommoditiesEnum, Offer, TypesEnum} from '../types/index.js';
+import {CommoditiesEnum, Offer, TypesEnum} from '../types';
 
 export function createOffer(offerData: string): Offer {
   const [

@@ -1,5 +1,5 @@
-import {OfferGenerator} from './offer-generator/offer-generator.interface.js';
-import {City, MockServerData} from '../types/index.js';
+import {OfferGenerator} from './offer-generator/offer-generator.interface';
+import {City, MockServerData} from '../types';
 import {
   generateRandomValue,
   getRandomBoolean,
@@ -7,7 +7,7 @@ import {
   getRandomItem,
   getRandomItems,
   getRandomType
-} from '../helpers/index.js';
+} from '../helpers';
 import dayjs from 'dayjs';
 
 const MIN_PRICE = 100;
