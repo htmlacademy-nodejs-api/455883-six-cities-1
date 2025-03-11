@@ -1,0 +1,90 @@
+{
+  "api": {
+    "type": [
+      "house",
+      "room",
+      "hotel",
+      "apartment"
+    ],
+    "titles": [
+      "Charming Cottage Retreat: Perfect for a Romantic Getaway",
+      "Stylish Studio in the Heart of Downtown: Walk Everywhere!",
+      "Cozy Treehouse: Experience Nature Like Never Before",
+      "Luxurious Penthouse with Skyline Views: Your Urban Oasis",
+      "Beachfront Paradise: Step Right onto the Sand!",
+      "Rustic Farm Stay: Relax and Reconnect with Nature",
+      "Modern Loft with Industrial Charm: A Unique Stay in the City",
+      "Secluded Cabin: Digital Detox in Nature’s Embrace",
+      "Quaint Bungalow: Family-Friendly with Patio Games",
+      "Historic townhouse: Step Back in Time with Modern Comforts",
+      "Trendy Tiny Home: Embrace Minimalism in Style",
+      "Dreamy Desert Retreat: Stargazing Under Clear Skies",
+      "Chic Apartment with Artistic Vibes: Perfect for Creatives",
+      "Glamorous Glamping Tent: Nature Meets Luxury",
+      "Lakefront Escape: Feel the Serenity and Go Fishing!",
+      "Stylish Beach House: Your Coastal Adventure Awaits",
+      "Cozy Log Cabin: Winter Wonderland Awaits You",
+      "Unique Themed Room: Experience a Night Like No Other",
+      "Elevated Experience: Hot Tub with a View for Relaxation",
+      "Sunset Oasis: Sit Back and Enjoy Breathtaking Views"
+    ],
+    "descriptions": [
+      "Nestled in a serene landscape, our charming cottage is the ideal escape for couples. Enjoy a cozy fireplace, a beautiful garden, and the tranquility of nature, all while being just minutes from local attractions.",
+      "Experience the vibrant energy of the city from our stylish studio, located in the heart of downtown. Enjoy modern amenities, chic decor, and proximity to restaurants, shops, and nightlife. Your urban adventure awaits!",
+      "Escape to our enchanting treehouse, where you can reconnect with nature. Featuring rustic decor and panoramic views, this unique stay offers hiking trails nearby and a peaceful retreat high above the ground.",
+      "Indulge in luxury in our stunning penthouse, offering breathtaking skyline views. Relax in spacious living areas and enjoy upscale amenities, including a private terrace. The perfect spot for an unforgettable city stay!",
+      "Our beachfront paradise allows you to wake up to the sound of waves and stunning ocean views. With direct access to the beach, you can enjoy swimming, sunbathing, and evening strolls—paradise awaits!",
+      "Immerse yourself in rural tranquility at our rustic farm stay. Experience charming farm life, from fresh produce to peaceful surroundings, and reconnect with nature while enjoying the simple pleasures of country living."
+    ],
+    "cities": [
+      {
+        "name": "Paris",
+        "coords": {
+          "latitude": "48.85661",
+          "longitude": "2.351499"
+        }
+      },
+      {"name": "Cologne",
+        "coords": {
+          "latitude": "50.938361",
+          "longitude": "6.959974"
+        }
+      },
+      {"name": "Brussels",
+        "coords": {
+          "latitude": "50.846557",
+          "longitude": "4.351697"
+        }
+      },
+      {"name": "Amsterdam",
+        "coords": {
+          "latitude": "52.370216",
+          "longitude": "4.895168"
+        }
+      },
+      {"name": "Hamburg",
+        "coords": {
+          "latitude": "53.550341",
+          "longitude": "10.000654"
+        }
+      },
+      {"name": "Dusseldorf",
+        "coords": {
+          "latitude": "51.225402",
+          "longitude": "6.776314"
+        }
+      }
+    ],
+    "photos": [
+      "https://avatars.mds.yandex.net/i?id=d16074fe59c7041c7d373842a60673dddca6a216-12475132-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=77b8dc3f0610262be54c78f5eca50016-5430182-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=b15155cca2e749dc488208a727278ad7e570e288-5487054-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=8cbb1c81d2ca009373aea0799eeaa46604b79939-9833563-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=a04ed7bb456ca85993fa4e5e8b4c217879fa128b-4569535-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=8a0490796061cb082b52738e1bfee684c025cb00-10476199-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=21b403854b0937f4420a54af94f66e4a4b77296a-10310451-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=77b797f35192a1d4b9875afee8f8d885d35bbec6-4576871-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=8f5cdc217397d8ebb7efda2c79e895d6cbcfe4d9-8494072-images-thumbs&n=13"
+    ]
+  }
+}

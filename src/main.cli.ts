@@ -3,6 +3,7 @@ import {Command} from 'commander';
 import {HelpCommand} from './cli/commands/help.command.js';
 import {VersionCommand} from './cli/commands/version.command.js';
 import {ImportCommand} from './cli/commands/import.command.js';
+import {GenerateCommand} from './cli/commands/generate.command.js';
 
 const bootstrap = () => {
   const program = new Command();
@@ -11,8 +12,8 @@ const bootstrap = () => {
     .description('Six Cities CLI')
     .option('-h, --help', 'Show list of commands')
     .option('-v, --version', 'Show app version')
-    .option('-i, --import <value>', 'Import data from .tsv')
-    .option('-g, --generate <n> <value> <url>', 'Generate N test data')
+    .option('-i, --import <path>', 'Import data from .tsv')
+    .option('-g, --generate <args...>', 'Generate N test data <n>, <path>, <url>',)
     .parse(process.argv);
 
   const options = program.opts();
@@ -30,6 +31,11 @@ const bootstrap = () => {
   if(options.import) {
     const command = new ImportCommand();
     command.execute(options.import);
+  }
+
+  if(options.generate) {
+    const command = new GenerateCommand();
+    command.execute(...options.generate);
   }
 
 };

@@ -6,7 +6,7 @@ export enum TypesEnum {
   Hotel = 'hotel'
 }
 
-export enum FacilitiesEnum {
+export enum CommoditiesEnum {
   Breakfast = 'Breakfast',
   AirConditioning = 'Air conditioning',
   LaptopFriendlyWorkspace = 'Laptop friendly workspace',
@@ -30,7 +30,7 @@ export interface Offer {
   roomsCount: number,
   guestsCount: number,
   price: number,
-  facilities: FacilitiesEnum[],
+  commodities: CommoditiesEnum[],
   author: string,
   commentsCount: number,
   coords: {

@@ -1,53 +1,38 @@
+import {EventEmitter} from 'node:events';
+import {createReadStream} from 'node:fs';
 import {FileReader} from './file-reader.interface';
-import {readFileSync} from 'node:fs';
-import {FacilitiesEnum, Offer, TypesEnum} from '../types/offer.js';
 
-export class TsvFileReader implements FileReader {
+const CHUNK_SIZE = 16384; // 16KB
+
+export class TsvFileReader extends EventEmitter implements FileReader {
   private rawData = '';
 
   constructor(private readonly filename: string) {
+    super();
   }
 
-  public read() {
-    this.rawData = readFileSync(this.filename, {encoding: 'utf-8'});
-  }
+  public async read(): Promise<void> {
+    const readStream = createReadStream(this.filename, {
+      highWaterMark: CHUNK_SIZE,
+      encoding: 'utf-8',
+    });
 
-  private parseCoordinates(stringCoordinates: string): {longitude: number, latitude: number} {
-    const parsedCoordinates = stringCoordinates.split(';');
-    return {
-      longitude: parseFloat(parsedCoordinates[1]),
-      latitude: parseFloat(parsedCoordinates[0])
-    };
-  }
+    let remainingData = '';
+    let nextLinePosition = -1;
+    let importedRowCount = 0;
 
-  public toArray(): Offer[] {
-    if (!this.rawData) {
-      throw new Error('File not readed');
+    for await (const chunk of readStream) {
+      remainingData += chunk.toString();
+
+      while ((nextLinePosition = remainingData.indexOf('\n')) >= 0) {
+        const completeRow = remainingData.slice(0, nextLinePosition + 1);
+        remainingData = remainingData.slice(++nextLinePosition);
+        importedRowCount++;
+
+        this.emit('line', completeRow);
+      }
     }
 
-    return this.rawData
-      .split('\n')
-      .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
-      .map(([title, description, date, city, previewImage, photos, isPremium, isFavorite, rating, type, roomsCount, guestsCount, price, facilities, author, commentsCount, coords]): Offer => ({
-        title,
-        description,
-        date: new Date(date),
-        city,
-        previewImage,
-        photos: photos.split(';'),
-        isPremium: Boolean(isPremium),
-        isFavorite: Boolean(isFavorite),
-        rating: parseFloat(rating),
-        type: type as TypesEnum,
-        roomsCount: parseInt(roomsCount, 10),
-        guestsCount: parseInt(guestsCount, 10),
-        price: parseInt(price, 10),
-        facilities: facilities.split(';') as FacilitiesEnum[],
-        author,
-        commentsCount: parseInt(commentsCount, 10),
-        coords: this.parseCoordinates(coords)
-      })
-      );
+    this.emit('end', importedRowCount);
   }
 }
