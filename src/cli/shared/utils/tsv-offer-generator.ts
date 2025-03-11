@@ -11,6 +11,7 @@ import {
 import dayjs from 'dayjs';
 
 const COMMENTS_COUNT = 5;
+const AUTHOR_LINK = 'https://vk.com/id463035';
 const enum Price {
   Min = 100,
   Max = 100000
@@ -53,9 +54,8 @@ export class TsvOfferGenerator implements OfferGenerator {
     const roomCount = generateRandomValue(Rooms.Min, Rooms.Max).toString();
     const guestCount = generateRandomValue(Guests.Min, Guests.Max).toString();
     const price = generateRandomValue(Price.Min, Price.Max).toString();
-    const author = 'https://vk.com/id463035';
     const commodities = getRandomCommodities();
 
-    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, author, COMMENTS_COUNT, coords].join('\t');
+    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, AUTHOR_LINK, COMMENTS_COUNT, coords].join('\t');
   }
 }
