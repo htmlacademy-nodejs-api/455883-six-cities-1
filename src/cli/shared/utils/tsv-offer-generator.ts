@@ -55,8 +55,7 @@ export class TsvOfferGenerator implements OfferGenerator {
     const price = generateRandomValue(Price.Min, Price.Max).toString();
     const author = 'https://vk.com/id463035';
     const commodities = getRandomCommodities();
-    const commentsCount = COMMENTS_COUNT;
 
-    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, author, commentsCount, coords].join('\t');
+    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, author, COMMENTS_COUNT, coords].join('\t');
   }
 }
