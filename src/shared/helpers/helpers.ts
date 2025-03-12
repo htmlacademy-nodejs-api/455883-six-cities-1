@@ -1,4 +1,4 @@
-import {CommoditiesEnum, TypesEnum} from '../types/offer';
+import {CommoditiesEnum, TypesEnum} from '../types/offer.js';
 
 export function generateRandomValue(min:number, max: number, numAfterDigit = 0) {
   return +((Math.random() * (max - min)) + min).toFixed(numAfterDigit);

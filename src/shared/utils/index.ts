@@ -1,3 +1,3 @@
-export * from './tsv-offer-generator';
-export * from './file-writer.interface';
-export * from './file-reader.interface';
+export * from './tsv-offer-generator.js';
+export * from './file-writer.interface.js';
+export * from './file-reader.interface.js';
