@@ -43,6 +43,7 @@ export function createOffer(offerData: string): Offer {
   return {
     title,
     description,
+
     city,
     previewImage,
     photos: photos.split(';'),

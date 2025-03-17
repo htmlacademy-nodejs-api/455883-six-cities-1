@@ -1,4 +1,5 @@
 import {City, MockServerData} from '../types/index.js';
+
 import {
   generateRandomValue,
   getRandomBoolean,
@@ -32,7 +33,6 @@ export class TsvOfferGenerator implements OfferGenerator {
     const guestCount = generateRandomValue(Guests.Min, Guests.Max).toString();
     const price = generateRandomValue(Price.Min, Price.Max).toString();
     const commodities = getRandomCommodities();
-
 
     return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, Author.Email, Author.Name, Author.Type, Author.AvatarPath, COMMENTS_COUNT, coords].join('\t');
   }

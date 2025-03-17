@@ -1,5 +1,6 @@
 import {CommoditiesEnum, TypesEnum} from '../types/index.js';
 
+
 export function generateRandomValue(min:number, max: number, numAfterDigit = 0) {
   return +((Math.random() * (max - min)) + min).toFixed(numAfterDigit);
 }
