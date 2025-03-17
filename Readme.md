@@ -55,7 +55,7 @@ version: main.cli.js --version
 
 help: main.cli.js --help
 
-import: main.cli.js --import ../mocks/mock-data.tsv
+import: main.cli.js --import ..\mocks\mock-data.tsv admin test localhost six-cities secret
 
 generate: main.cli.js --generate 5 ../mocks/mock-data.tsv http://localhost:3123/api
 

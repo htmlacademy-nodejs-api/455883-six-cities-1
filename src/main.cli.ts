@@ -13,7 +13,7 @@ const bootstrap = () => {
     .description('Six Cities CLI')
     .option('-h, --help', 'Show list of commands')
     .option('-v, --version', 'Show app version')
-    .option('-i, --import <args...>', 'Import data from .tsv')
+    .option('-i, --import <args...>', 'Import data from .tsv <path> <login> <password> <host> <db name> <secret>')
     .option('-g, --generate <args...>', 'Generate N test data <n>, <path>, <url>',)
     .parse(process.argv);
 
