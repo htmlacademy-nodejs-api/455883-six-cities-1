@@ -1,6 +1,6 @@
 import {defaultClasses, getModelForClass, modelOptions, prop, Ref} from '@typegoose/typegoose';
 import {CommoditiesEnum, TypesEnum} from '../../types/index.js';
-import {Description, Guests, OFFER_PHOTOS_COUNT, Price, Rating, Rooms, Title} from '../../utils/index.js';
+import {Description, Guests, Price, Rating, Rooms, Title} from '../../utils/index.js';
 import {UserEntity} from '../user/index.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging

@@ -4,7 +4,6 @@ export function createOffer(offerData: string): Offer {
   const [
     title,
     description,
-    date,
     city,
     previewImage,
     photos,
