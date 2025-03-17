@@ -1,5 +1,4 @@
-import {OfferGenerator} from './offer-generator/offer-generator.interface';
-import {City, MockServerData} from '../types';
+import {City, MockServerData} from '../types/index.js';
 import {
   generateRandomValue,
   getRandomBoolean,
@@ -7,32 +6,10 @@ import {
   getRandomItem,
   getRandomItems,
   getRandomType
-} from '../helpers';
+} from '../helpers/index.js';
 import dayjs from 'dayjs';
-
-const COMMENTS_COUNT = 5;
-const AUTHOR_LINK = 'https://vk.com/id463035';
-const enum Price {
-  Min = 100,
-  Max = 100000
-}
-const enum WeekDay {
-  First = 1,
-  Last = 7
-}
-const enum Rating {
-  Min = 1,
-  Max = 5,
-  DIGITS_AFTER= 1
-}
-const enum Rooms {
-  Min = 1,
-  Max = 8
-}
-const enum Guests {
-  Min = 1,
-  Max = 10
-}
+import {OfferGenerator} from './offer-generator/index.js';
+import {Author, COMMENTS_COUNT, Guests, Price, Rating, Rooms, WeekDay} from './constants.js';
 
 export class TsvOfferGenerator implements OfferGenerator {
   constructor(private readonly mockData: MockServerData) {
@@ -56,6 +33,7 @@ export class TsvOfferGenerator implements OfferGenerator {
     const price = generateRandomValue(Price.Min, Price.Max).toString();
     const commodities = getRandomCommodities();
 
-    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, AUTHOR_LINK, COMMENTS_COUNT, coords].join('\t');
+
+    return [title, description, createdDate, cityName, preview, photos, isPremium, isFavorite, rating, type, roomCount, guestCount, price,commodities, Author.Email, Author.Name, Author.Type, Author.AvatarPath, COMMENTS_COUNT, coords].join('\t');
   }
 }

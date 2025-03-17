@@ -1,3 +1,4 @@
-export * from './offer';
-export * from './mock-server-data.type';
+export * from './offer.js';
+export * from './mock-server-data.type.js';
 export * from './component.enum.js';
+export * from './user.js';

@@ -1,4 +1,4 @@
-import {CommoditiesEnum, Offer, TypesEnum} from '../types';
+import {CommoditiesEnum, Offer, TypesEnum, UserTypes} from '../types/index.js';
 
 export function createOffer(offerData: string): Offer {
   const [
@@ -16,23 +16,33 @@ export function createOffer(offerData: string): Offer {
     guestsCount,
     price,
     commodities,
-    author,
+    email,
+    name,
+    userType,
+    avatarPath,
     commentsCount,
     coords,
   ] = offerData.replace('\n', '').split('\t');
 
   const parseCoordinates = (stringCoordinates: string): {longitude: number, latitude: number} => {
-    const parsedCoordinates = stringCoordinates.split(';');
+    // const parsedCoordinates = stringCoordinates.split(';');
+    console.log(stringCoordinates, 'stringCoordinates');
     return {
-      longitude: parseFloat(parsedCoordinates[1]),
-      latitude: parseFloat(parsedCoordinates[0])
+      longitude: parseFloat('30'),
+      latitude: parseFloat('30')
     };
+  };
+
+  const author = {
+    email,
+    name,
+    type: userType as UserTypes,
+    avatarPath
   };
 
   return {
     title,
     description,
-    date: new Date(date),
     city,
     previewImage,
     photos: photos.split(';'),
