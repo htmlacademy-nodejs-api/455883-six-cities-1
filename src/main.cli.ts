@@ -31,7 +31,6 @@ const bootstrap = () => {
 
   if(options.import) {
     const command = new ImportCommand();
-    console.log(options.import, 'test');
     const [filename, login, password, host, dbname, salt] = options.import;
     command.execute(filename, login, password, host, dbname, salt);
   }
