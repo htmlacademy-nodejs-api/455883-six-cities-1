@@ -1,3 +1,4 @@
+import {User} from './user.js';
 
 export enum TypesEnum {
   Apartment = 'apartment',
@@ -19,7 +20,6 @@ export enum CommoditiesEnum {
 export interface Offer {
   title: string,
   description: string,
-  date: Date,
   city: string,
   previewImage: string,
   photos: string[],
@@ -31,7 +31,7 @@ export interface Offer {
   guestsCount: number,
   price: number,
   commodities: CommoditiesEnum[],
-  author: string,
+  author: User,
   commentsCount: number,
   coords: {
     longitude: number,

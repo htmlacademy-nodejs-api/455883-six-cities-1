@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import 'reflect-metadata';
 import {Command} from 'commander';
 import {HelpCommand} from './cli/commands/help.command.js';
 import {VersionCommand} from './cli/commands/version.command.js';
@@ -12,7 +13,7 @@ const bootstrap = () => {
     .description('Six Cities CLI')
     .option('-h, --help', 'Show list of commands')
     .option('-v, --version', 'Show app version')
-    .option('-i, --import <path>', 'Import data from .tsv')
+    .option('-i, --import <args...>', 'Import data from .tsv <path> <login> <password> <host> <db name> <secret>')
     .option('-g, --generate <args...>', 'Generate N test data <n>, <path>, <url>',)
     .parse(process.argv);
 
@@ -30,7 +31,8 @@ const bootstrap = () => {
 
   if(options.import) {
     const command = new ImportCommand();
-    command.execute(options.import);
+    const [filename, login, password, host, dbname, salt] = options.import;
+    command.execute(filename, login, password, host, dbname, salt);
   }
 
   if(options.generate) {
