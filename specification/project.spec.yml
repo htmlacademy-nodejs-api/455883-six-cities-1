@@ -1,0 +1,271 @@
+---
+openapi: "3.1.0"
+info:
+  title: "API сервер для демо-проекта «Шесть городов»."
+  description: "* Список ресурсов и маршрутов сервера «Шесть городов»."
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+  version: "2.0.0"
+tags:
+  - name: "offers"
+    description: "Действия с объявлениями"
+  - name: "users"
+    description: "Действия с пользователями"
+  - name: "comments"
+    description: "Действия с комментариями"
+paths:
+  /offers/:
+    post:
+      tags:
+        - "offers"
+      summary: "Создание нового объявления"
+      description: "Создает новое объявление."
+      requestBody:
+        description: "Информация для создания объявления."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createOffer"
+        required: true
+        responses:
+          "201":
+            description: "Объявление создано. Объект объявления."
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/offer"
+          "409":
+            description: "Ошибка создания объявления."
+    get:
+      tags:
+        - "offers"
+      summary: "Получить все объявления"
+      responses:
+        "200":
+          description: "Список объектов объявлений."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/offer"
+  /offers/{id}:
+    patch:
+      tags:
+        - "offers"
+      summary: "Редактировать объявление"
+      description: "Редактирует объявление."
+      requestBody:
+        description: "Информация для обновления объявления."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createOffer"
+        required: true
+        responses:
+          "201":
+            description: "Объявление обновлено. Объект объявления."
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/offer"
+          "409":
+            description: "Ошибка обновления объявления."
+    get:
+      tags:
+        - "offers"
+      summary: "Получить объявление"
+      description: "Получает объявление по id"
+      responses:
+        "200":
+          description: "Объект объявления."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/offer"
+  /offers/{id}/delete:
+    patch:
+      tags:
+        - "offers"
+      summary: "Удалить объявление"
+      description: "Ставит объявлению статус deletedAt"
+      responses:
+        "203":
+          description: "Объект объявления удален."
+  /offers/{id}/comments:
+    patch:
+      tags:
+        - "offers"
+      summary: "Получить список комментариев для объявления"
+      description: "Получает список комментариев для объявления"
+      responses:
+        "200":
+          description: "Список комментариев объявления."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/comment"
+  /users/register:
+    post:
+      tags:
+        - "users"
+      summary: "Регистрация пользователя"
+      description: "Регистрирует нового пользователя."
+      requestBody:
+        description: "Информация для создания нового пользователя."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createUser"
+        required: true
+        responses:
+          "201":
+            description: "Пользователь зарегистрирован. Объект пользователя."
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/user"
+          "409":
+            description: "Пользователь с таким email уже существует."
+  /users/login:
+    post:
+      tags:
+        - "users"
+      summary: "Авторизация пользователя"
+      description: "Авторизует пользователя на основе логина и пароля"
+      requestBody:
+        description: "Информация для авторизации пользователя."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/loginUser"
+        required: true
+        responses:
+          "201":
+            description: "Пользователь авторизован. Объект пользователя."
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/loggedUser"
+          "409":
+            description: "Ошибка авторизации."
+    get:
+      tags:
+        - "users"
+      summary: "Проверка состояния пользователя"
+      description: "Возвращает информацию по авторизованному пользователю"
+      requestBody:
+        description: "Информация авторизован ли пользователь."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
+        required: true
+        responses:
+          "203":
+            description: "Пользователь авторизован."
+          "409":
+            description: "Ошибка авторизации."
+components:
+  schemas:
+    createOffer:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+          example: "Красивое название"
+        description:
+          type: "string"
+          example: "Красивое описание"
+        city:
+          type: "string"
+          example: "Paris"
+        previewImage:
+          type: "string"
+          example: "https://avatars.mds.yandex.net/i?id=77b8dc3f0610262be54c78f5eca50016-5430182-images-thumbs&n=13"
+        photos:
+          type: "Array"
+          example: ["https://avatars.mds.yandex.net/i?id=77b8dc3f0610262be54c78f5eca50016-5430182-images-thumbs&n=13"]
+        isPremium:
+          type: "boolean"
+          example: true
+        isFavorite:
+          type: "boolean"
+          example: false
+        rating:
+          type: "number"
+          example: 4
+        type:
+          type: "string"
+          example: 'room'
+        roomsCount:
+            type: "number"
+            example: 4
+        guestsCount:
+            type: "number"
+            example: 4
+        price:
+            type: "number"
+            example: 1000
+        commodities:
+              type: "Array"
+              example: [ "towels"]
+        coords:
+          type: "object"
+          example: {
+            longitude: 60,
+            latitude: 40
+          }
+    offer:
+      id:
+        type: "string"
+        example: "6329c3d6a04ab1061c6425ea"
+    comment:
+      id:
+        type: "string"
+        example: "6329c3d6a04ab1061c6425ea"
+    createUser:
+      type: "object"
+      properties:
+        email:
+          type: "string"
+          example: "keks@htmlacademy.ru"
+        name:
+          type: "string"
+          example: "Keks"
+        type:
+          type: "string"
+          example: "normal"
+        avatarPath:
+          type: "string"
+          example: "https://vk.com/id463035"
+        password:
+          type: "string"
+          example: 123456
+    user:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "6329c3d6a04ab1061c6425ea"
+        email:
+          type: "string"
+          example: "keks@htmlacademy.ru"
+    loginUser:
+      type: "object"
+      properties:
+        password:
+          type: "string"
+          example: 123456
+        email:
+          type: "string"
+          example: "keks@htmlacademy.ru"
+    loggedUser:
+      type: "object"
+      properties:
+        token:
+          type: "string"
+          example: 123456
